@@ -1,23 +1,14 @@
-import React from 'react';
-import {TextField} from "./TextField"
-import {Counter} from "./Counter"
+import React from 'react'
+import './App.scss'
+import HelloD3 from './components/HelloD3/HelloD3'
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <HelloD3/>
+      </header>
+    </div>
+  )
+}
 
-const App: React.FC = () =>{
-  return <div>
-     
-    
-      <Counter>
-      {(count,setCount) => (
-      <div>
-        <h1>Sound Fatigue Visualisation</h1>
-        {count}
-          <button onClick={() =>setCount(count+1)}>+</button>
-      </div>)}
-      </Counter>
-
-      
-    
-  </div>
-};
-
-export default App;
+export default App
