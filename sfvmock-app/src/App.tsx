@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from 'react'
 import './App.scss'
 import HelloD3Data from './components/HelloD3Data/HelloD3Data'
@@ -22,5 +23,25 @@ function App() {
     </div>
   )
 }
+=======
+import React from 'react';
+import {TextField} from "./TextField"
+import {Counter} from "./Counter"
+import { Graph } from './Graph';
+
+const App: React.FC = () =>{
+  return <div>
+     
+    
+      <Counter>
+      {(count,setCount) => (
+      <div>
+        <h1>Sound Fatigue Visualisation</h1>
+        {count}
+          <button onClick={() =>setCount(count+1)}>+</button>
+      </div>)}
+      </Counter>
+      <Graph/>
+>>>>>>> Stashed changes
 
 export default App
