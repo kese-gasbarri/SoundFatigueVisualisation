@@ -2,7 +2,8 @@ import React,{useRef,useState,useEffect} from 'react'
 import {select,selectAll,Selection} from 'd3-selection'
 import {scaleLinear,scaleBand} from 'd3-scale'
 import {max} from 'd3-array'
-
+import {axisLeft, axisBottom} from 'd3-axis'
+import "./App.css"
 let initialData = [
   {
     "Recorded Value (dBA)": 64.5,
@@ -632,6 +633,12 @@ const App: React.FC<AppProps> = ({}) => {
       }
       else{
         selection
+          .append("g")
+          .attr("class", "grid")
+          .call(axisLeft(y)
+                .tickSize(-dimensions.width)
+                
+          )
           .selectAll('rect')
           .data(data)
           .enter()
@@ -640,7 +647,12 @@ const App: React.FC<AppProps> = ({}) => {
           .attr('height',d=>dimensions.height- y(d['Recorded Value (dBA)']))
           .attr('x',d=>x(String(d['Time (seconds)']))!)
           .attr('y',d=>y(d['Recorded Value (dBA)']))
-          .attr('fill','purple')
+          .attr("fill", function(d, i) {
+            return d['Recorded Value (dBA)'] > 60 ? "red" : "grey";
+            })
+          
+              
+          
       }
 
     },[selection])
@@ -667,7 +679,9 @@ const App: React.FC<AppProps> = ({}) => {
           .attr('height',d=>dimensions.height- y(d['Recorded Value (dBA)']))
           .attr('x',d=>x(String(d['Time (seconds)']))!)
           .attr('y',d=>y(d['Recorded Value (dBA)']))
-          .attr('fill','purple')
+          .attr("fill", function(d, i) {
+            return d['Recorded Value (dBA)'] > 60 ? "red" : "grey";
+            })
 
           rects
             .enter()
@@ -676,7 +690,9 @@ const App: React.FC<AppProps> = ({}) => {
             .attr('height',d=>dimensions.height- y(d['Recorded Value (dBA)']))
             .attr('x',d=>x(String(d['Time (seconds)']))!)
             .attr('y',d=>y(d['Recorded Value (dBA)']))
-            .attr('fill','purple')
+            .attr("fill", function(d, i) {
+              return d['Recorded Value (dBA)'] > 60 ? "red" : "grey";
+              })
       }
 
 
@@ -701,6 +717,7 @@ const App: React.FC<AppProps> = ({}) => {
 
 
     }
+    
     return (
       <div>
         <svg ref={ref} width={dimensions.width} height ={dimensions.height}/>
