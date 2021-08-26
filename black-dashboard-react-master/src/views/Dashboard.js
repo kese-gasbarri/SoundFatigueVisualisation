@@ -20,7 +20,7 @@ import React from "react";
 import classNames from "classnames";
 // react plugin used to create charts
 import { Line, Bar } from "react-chartjs-2";
-
+import GetData from '../getData/GetData'
 // reactstrap components
 import {
   Button,
@@ -58,6 +58,10 @@ function Dashboard(props) {
   return (
     <>
       <div className="content">
+        <div>
+          Fetched data =
+          <GetData/>
+        </div>
         <Row>
           <Col xs="12">
             <Card className="card-chart">
