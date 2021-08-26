@@ -11,7 +11,7 @@ const GetData = () => {
                 setFetchedData(res.data);
                 
             } catch (err) {
-                console.log("ERRRORROROROR");
+                
                 console.log(err);
             }
         }
