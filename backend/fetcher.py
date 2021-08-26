@@ -57,6 +57,7 @@ class LevelFetcher(Thread):
                 data['sensor_id'] = sid
                 data['room_id'] = rid
                 result.append(data)
+                
             self.callback(result)
             time.sleep(self.period)
         
