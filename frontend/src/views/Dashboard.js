@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react plugin used to create charts
@@ -33,13 +34,13 @@ import {
   chartExample3,
   chartExample4,
 } from "variables/charts.js";
+=======
+import RoomCharts from "variables/RoomCharts";
+>>>>>>> 38f8d352c0b683ccca7b21f47bb860bc9c89227e
 
 function Dashboard(props) {
-  const [bigChartData, setbigChartData] = React.useState("data1");
-  const setBgChartData = (name) => {
-    setbigChartData(name);
-  };
   return (
+<<<<<<< HEAD
     <>
        <div className="content">
         <Row>
@@ -513,6 +514,9 @@ function Dashboard(props) {
         </Row>
       </div>
     </>
+=======
+    <RoomCharts/>
+>>>>>>> 38f8d352c0b683ccca7b21f47bb860bc9c89227e
   );
 }
 

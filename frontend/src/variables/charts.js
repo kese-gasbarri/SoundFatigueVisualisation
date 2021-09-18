@@ -1,10 +1,3 @@
-// ##############################
-// // // Chart variables
-// #############################
-
-// import FetchData from "fetch/FetchData.js"
-const { FetchData, FetchAPI } = require("fetch/FetchData");
-
 // chartExample1 and chartExample2 options
 let chart1_2_options = {
   maintainAspectRatio: false,
