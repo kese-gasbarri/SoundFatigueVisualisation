@@ -3,7 +3,7 @@ import React from "react";
 import classNames from "classnames";
 // react plugin used to create charts
 import { Line, Bar } from "react-chartjs-2";
-import FetchData from "fetch/FetchData.js"
+//import FetchData from "fetch/FetchData.js"
 
 // reactstrap components
 import {
@@ -42,8 +42,6 @@ function Dashboard(props) {
   return (
     <>
        <div className="content">
-         <div>Fetched data:</div>
-        <FetchData></FetchData>
         <Row>
           <Col xs="12">
             <Card className="card-chart">

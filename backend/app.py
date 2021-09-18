@@ -34,7 +34,8 @@ def query_room(room_id: int, start_time: int = time.time() - 5 * 60, end_time: i
             rs_series["pitch"] = [x["pitch"] for x in data]
             ret.append(rs_series)
         return ret
-        
+
+ 
 @app.get("/sensor/{sensor_id}/")
 def query_sensor(room_id: int, start_time: int, end_time: int):
     with Session(engine) as session:
