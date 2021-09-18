@@ -20,6 +20,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+'''
+This function should return the amount of sound in a room
+over a specific time period. 
+'''
 @app.get("/room/{room_id}/")
 def query_room(room_id: int, start_time: int = time.time() - 5 * 60, end_time: int = time.time()):
     with Session(engine) as session:
@@ -35,6 +39,21 @@ def query_room(room_id: int, start_time: int = time.time() - 5 * 60, end_time: i
             ret.append(rs_series)
         return ret
 
+
+'''
+This function should return the amount of sound exposed to a single officer
+Over a specific time period. 
+'''
+@app.get("/officer/{officer_id}/")
+def query_officer(officer_id: int, start_time: int = time.time() - 5 * 60, end_time: int = time.time()):
+    with Session(engine) as session:
+        Officer = session.exec(select(models.Officer).where(models.Officer.ID == officer_id)).one()
+        print(Officer)
+        MovementEvents = session.exec(select(models.MovementEvent).where(models.MovementEvent.OfficerID == officer_id)).all()
+        print(MovementEvents)
+        return MovementEvents
+        # return MovementEvents
+        
  
 @app.get("/sensor/{sensor_id}/")
 def query_sensor(room_id: int, start_time: int, end_time: int):
