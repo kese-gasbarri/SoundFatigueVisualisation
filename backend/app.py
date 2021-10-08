@@ -113,7 +113,7 @@ def query_room(room_id: int, start_time: Optional[int] = None, end_time: Optiona
             for x in rs.Samples:
                 print(x.Timestamp)
 
-            rs_series["x"] = [x.Timestamp for x in rs.Samples if x.Timestamp[0:9]== input_date_string]
+            rs_series["x"] = [x.Timestamp[10:] for x in rs.Samples if x.Timestamp[0:9]== input_date_string]
             #rs_series["x"] = [x.Timestamp for x in valid_samples]
             print(len(rs_series['x']))
             if(len(rs_series['x']) !=0):
