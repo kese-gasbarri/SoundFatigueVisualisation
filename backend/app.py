@@ -11,7 +11,7 @@ from operator import add
 
 from datetime import date
 import datetime
-import ciso8601
+
 SQLModel.metadata.create_all(engine)
 
 app = FastAPI()
@@ -54,8 +54,8 @@ def query_room(room_id: int, start_time: Optional[int] = None, end_time: Optiona
             rs_series = {"SensorID": rs.SensorB.ID, "SensorName":rs.SensorB.Name}
             valid_samples = session.exec(select(models.Sample).where(
                 models.Sample.RoomSensorID == rs.ID,
-                start_time < models.Sample.Timestamp,
-                end_time > models.Sample.Timestamp
+                models.Sample.Timestamp,
+                models.Sample.Timestamp
             )).all()
             rs_series["x"] = [x.Timestamp for x in valid_samples]
             #rs_series["x"] = [x.Timestamp for x in rs.Samples if start_time <= x.Timestamp <= end_time]
@@ -110,8 +110,11 @@ def query_room(room_id: int, start_time: Optional[int] = None, end_time: Optiona
             )).all()
             #time.strftime("%H:%M:%S", time.gmtime(timeStampPopulate))
             #rs_series["x"] = [time.strftime('%H:%M:%S',time.gmtime(x.Timestamp)) for x in valid_samples]
-            
-            rs_series["x"] = [x.Timestamp[10:] for x in rs.Samples if x.Timestamp[0:9]==input_date_string]
+            for x in rs.Samples:
+                print(x.Timestamp)
+
+            #rs_series["x"] = [x.Timestamp for x in rs.Samples if x.Timestamp[0:9]== input_date_string]
+            rs_series["x"] = [x.Timestamp for x in valid_samples]
             print(len(rs_series['x']))
             if(len(rs_series['x']) !=0):
                 data = [json.loads(x.MeasurementsJSON) for x in valid_samples]

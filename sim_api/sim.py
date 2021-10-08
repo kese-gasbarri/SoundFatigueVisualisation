@@ -79,11 +79,12 @@ while True:
         }
         
         timeStamp = int(time.time())
+        print(timeStamp)
         # Hour:Minute:Seconds string format
-        timeString = ""
-        now = datetime.datetime.now()
-        timeString = str(now.day)+"-"+str(now.month)+"-"+ str(now.year)+"-"+str(now.hour) +":"+ str(now.minute) +":"+ str(now.second)
-        print(timeString)
+        #timeString = ""
+        #now = datetime.datetime.now()
+        #timeString = str(now.day)+"-"+str(now.month)+"-"+ str(now.year)+"-"+str(now.hour) +":"+ str(now.minute) +":"+ str(now.second)
+       # print(timeString)
         
         timeStampPopulate = timeStamp
 
@@ -96,7 +97,7 @@ while True:
   
        # print("THE TIME STAMP",newTimeStamp)
         #print(timeStampPopulate)
-        newSample = models.Sample(rs.ID, timeString, 1, json.dumps(data))
+        newSample = models.Sample(rs.ID, timeStamp, 1, json.dumps(data))
         db.add(newSample)
         db.commit()
         if(timeStampPopulate == timeStamp):
